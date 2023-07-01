@@ -122,7 +122,15 @@ switch ($ItemPreparation) {
         $ContainerFilePath = $SandboxMounts[0].ContainerPath, (Get-Item $TargetPath).Name -join '\'
         $LogonCommand = Get-Incantation 'msiexec.exe' @('/i', $ContainerFilePath)
     }
-    Default { 
+    { $_ -in ".cmd", ".bat" } {
+        $ContainerFilePath = $SandboxMounts[0].ContainerPath, (Get-Item $TargetPath).Name -join '\'
+        $LogonCommand = Get-Incantation 'cmd.exe' @('/k', $ContainerFilePath)
+    }
+    ".ps1" {
+        $ContainerFilePath = $SandboxMounts[0].ContainerPath, (Get-Item $TargetPath).Name -join '\'
+        $LogonCommand = Get-Incantation 'powershell.exe' @('-ExecutionPolicy Bypass', '-NoExit', '-File', $ContainerFilePath)
+    }
+    Default {
         # Default behavious is shell-executable thingie (file-like with default app association)
         $ContainerFilePath = $SandboxMounts[0].ContainerPath, (Get-Item $TargetPath).Name -join '\'
         $LogonCommand = Get-Incantation 'explorer.exe' $ContainerFilePath

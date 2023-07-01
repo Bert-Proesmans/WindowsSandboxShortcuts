@@ -121,9 +121,11 @@ New-QuickItem -FileCommonName 'Directory' -ItemLabel "Open folder in a sandbox"
 New-QuickItem -FileCommonName 'Directory' -CustomPath "Background" -ItemLabel "Open folder in a sandbox"
 New-QuickItem -FileCommonName 'exefile' -FileExtension 'EXE'
 New-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
-New-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
 
 # Stable file associations independent of software state
 # REF; https://learn.microsoft.com/en-us/windows/win32/shell/app-registration#registering-verbs-and-other-file-association-information
 New-QuickItem -CustomPath 'SystemFileAssociations', '.pdf' -FileExtension 'PDF'
-# TODO; PS1, CMD, REG ..
+New-QuickItem -CustomPath 'SystemFileAssociations', '.ps1' -ItemLabel "Open script in a sandbox"
+New-QuickItem -CustomPath 'SystemFileAssociations', '.cmd' -ItemLabel "Open script in a sandbox"
+New-QuickItem -CustomPath 'SystemFileAssociations', '.bat' -ItemLabel "Open script in a sandbox"
+# TODO; REG ..
