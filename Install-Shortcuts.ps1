@@ -115,8 +115,15 @@ Function New-QuickItem {
 }
 
 
+# ProgID items, which depend on installed software state
+# The filetypes are from windows core, so we can composite our config into the registry safely
 New-QuickItem -FileCommonName 'Directory' -ItemLabel "Open folder in a sandbox"
 New-QuickItem -FileCommonName 'Directory' -CustomPath "Background" -ItemLabel "Open folder in a sandbox"
 New-QuickItem -FileCommonName 'exefile' -FileExtension 'EXE'
 New-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
-# TODO; PDF, PS1, CMD, REG ..
+New-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
+
+# Stable file associations independent of software state
+# REF; https://learn.microsoft.com/en-us/windows/win32/shell/app-registration#registering-verbs-and-other-file-association-information
+New-QuickItem -CustomPath 'SystemFileAssociations', '.pdf' -FileExtension 'PDF'
+# TODO; PS1, CMD, REG ..
