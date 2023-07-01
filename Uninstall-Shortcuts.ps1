@@ -57,3 +57,4 @@ Remove-QuickItem -FileCommonName 'Directory' -ItemLabel "Open folder in a sandbo
 Remove-QuickItem -FileCommonName 'Directory' -CustomPath "Background" -ItemLabel "Open folder in a sandbox"
 Remove-QuickItem -FileCommonName 'exefile' -FileExtension 'EXE'
 Remove-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
+Remove-QuickItem -CustomPath 'SystemFileAssociations', '.pdf' -FileExtension 'PDF'
