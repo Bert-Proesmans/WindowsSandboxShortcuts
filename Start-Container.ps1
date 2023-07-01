@@ -60,7 +60,7 @@ $LogonCommand = ''
 $IsFile = [System.IO.File]::Exists($TargetPath)
 if ($IsFile) {
     $ItemPreparation = (Get-Item $TargetPath).Extension
-    
+
     $ParentDirectoryPath = (Get-Item $TargetPath).Directory
     $SandboxMounts += @{
         HostPath      = $ParentDirectoryPath
@@ -97,7 +97,7 @@ function Get-Incantation {
     function FlattenArgumentList {
         param([Parameter(Mandatory = $true, Position = 0)][string[]] $arguments)
         # ERROR; Handle nested quoting properly! For each level deep we need to escape quotes
-        ($arguments | ForEach-Object { $_ -replace "'", "''"} | ForEach-Object { "'$_'"}) -join ', '
+        ($arguments | ForEach-Object { $_ -replace "'", "''" } | ForEach-Object { "'$_'" }) -join ', '
     }
 
     if ($VisiblePrompt.IsPresent) {
@@ -107,7 +107,7 @@ function Get-Incantation {
         $ArgumentList = @('-NoExit', 'Start-Process', "$Process @($ArgumentList)")
         $Process = 'powershell'
     }
-    
+
     $ArgumentList = FlattenArgumentList $ArgumentList
     # "[..] -command "Start-Process powershell @('-NoExit', 'Start-Process', 'powershell @(''-NoExit'')')"
     "powershell -executionpolicy unrestricted -command ""Start-Process $Process @($ArgumentList)"""

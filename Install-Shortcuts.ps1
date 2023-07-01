@@ -10,7 +10,7 @@
     An existing directory where this script can copy its runtime dependencies into.
 
 .PARAMETER DarkModeIcon
-    Add a white icon to the context menu items that launch the containers. 
+    Add a white icon to the context menu items that launch the containers.
 
 .EXAMPLE
      Install-Shortcuts
