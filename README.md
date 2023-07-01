@@ -5,6 +5,10 @@ Easily open files and directories within the Windows Sandbox system.
 This tool creates custom configuration scripts based on the user's intent. The
 following file extensions are accomodated;
 
+* v1.1
+    * pdf
+    * ps1
+    * cmd/bat
 * v1.0
     * Directory
     * exe
