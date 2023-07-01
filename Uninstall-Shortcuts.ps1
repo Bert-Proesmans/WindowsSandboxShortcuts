@@ -58,3 +58,6 @@ Remove-QuickItem -FileCommonName 'Directory' -CustomPath "Background" -ItemLabel
 Remove-QuickItem -FileCommonName 'exefile' -FileExtension 'EXE'
 Remove-QuickItem -FileCommonName 'Msi.Package' -FileExtension 'MSI'
 Remove-QuickItem -CustomPath 'SystemFileAssociations', '.pdf' -FileExtension 'PDF'
+Remove-QuickItem -CustomPath 'SystemFileAssociations', '.ps1' -ItemLabel "Open script in a sandbox"
+Remove-QuickItem -CustomPath 'SystemFileAssociations', '.cmd' -ItemLabel "Open script in a sandbox"
+Remove-QuickItem -CustomPath 'SystemFileAssociations', '.bat' -ItemLabel "Open script in a sandbox"
