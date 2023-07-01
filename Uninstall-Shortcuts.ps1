@@ -47,7 +47,7 @@ Function Remove-QuickItem {
         [string[]]$CustomPath = @()
     )
 
-    $ClassesPath = (@("Registry::HKEY_CLASSES_ROOT", $FileCommonName) + $CustomPath) -join '\'
+    $ClassesPath = (@("Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Classes", $FileCommonName) + $CustomPath) -join '\'
     $QuickItemPath = $ClassesPath, 'Shell', $ItemLabel -join '\'
     Remove-Item -Path $QuickItemPath -Recurse -Force | Out-Null
 }

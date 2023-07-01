@@ -90,7 +90,7 @@ Function New-QuickItem {
         [string[]]$CustomPath = @()
     )
 
-    $ClassesPath = (@("Registry::HKEY_CLASSES_ROOT", $FileCommonName) + $CustomPath) -join '\'
+    $ClassesPath = (@("Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Classes", $FileCommonName) + $CustomPath) -join '\'
     $QuickItemPath = $ClassesPath, 'Shell', $ItemLabel -join '\'
     $QuickItemCommandPath = $QuickItemPath, 'Command' -join '\'
     # New-Item -Path $QuickItemPath -Force
