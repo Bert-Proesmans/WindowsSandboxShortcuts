@@ -146,7 +146,13 @@ switch ($ItemPreparation) {
     <ProtectedClient>enable</ProtectedClient>
     <PrinterRedirection>disable</PrinterRedirection>
     <ClipboardRedirection>enable</ClipboardRedirection>
-    <MemoryInMB></MemoryInMB>
+    <ClipboardRedirection>disable</ClipboardRedirection>
+    <!--
+        Node text cannot be empty otherwise a startup exception is thrown.
+        Remove node for automatic memory calculation, or set a value larger than 1500.
+        WARN; A value lower than 1.5GB will cause performance degradation due to swapping.
+    -->
+    <MemoryInMB>2700</MemoryInMB>
     <MappedFolders>
         $(
             $SandboxMounts | ForEach-Object {
