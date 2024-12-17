@@ -139,20 +139,22 @@ switch ($ItemPreparation) {
 
 @"
 <Configuration>
+    <!-- REF; https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file -->
+    <ProtectedClient>enable</ProtectedClient>
     <VGpu>disable</VGpu>
     <Networking>enable</Networking>
-    <AudioInput>disable</AudioInput>
-    <VideoInput>disable</VideoInput>
-    <ProtectedClient>enable</ProtectedClient>
     <PrinterRedirection>disable</PrinterRedirection>
-    <ClipboardRedirection>enable</ClipboardRedirection>
-    <ClipboardRedirection>disable</ClipboardRedirection>
     <!--
         Node text cannot be empty otherwise a startup exception is thrown.
         Remove node for automatic memory calculation, or set a value larger than 1500.
         WARN; A value lower than 1.5GB will cause performance degradation due to swapping.
     -->
     <MemoryInMB>2700</MemoryInMB>
+    <!-- Settings below can now be toggled from the client window -->
+    <AudioInput>disable</AudioInput>
+    <VideoInput>disable</VideoInput>
+    <ClipboardRedirection>disable</ClipboardRedirection>
+    <!-- Toggled settings -->
     <MappedFolders>
         $(
             $SandboxMounts | ForEach-Object {
