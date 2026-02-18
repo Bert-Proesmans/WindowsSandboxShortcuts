@@ -108,9 +108,13 @@ function Get-Incantation {
         $Process = 'powershell'
     }
 
+    # SOURCE; https://github.com/microsoft/Windows-Sandbox/issues/68
+    $RuntimeFixes = 'REG add HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy /v VerifiedAndReputablePolicyState /t REG_DWORD /d 0 /f & ECHO "" | CiTool --refresh'
+    $RunPrefixArguments = FlattenArgumentList @('/c', $RuntimeFixes)
+
     $ArgumentList = FlattenArgumentList $ArgumentList
     # "[..] -command "Start-Process powershell @('-NoExit', 'Start-Process', 'powershell @(''-NoExit'')')"
-    "powershell -executionpolicy unrestricted -command ""Start-Process $Process @($ArgumentList)"""
+    "powershell -executionpolicy unrestricted -command ""Start-Process cmd.exe @($RunPrefixArguments); Start-Process $Process @($ArgumentList)"""
 }
 
 switch ($ItemPreparation) {
